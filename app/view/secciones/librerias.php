@@ -2,3 +2,4 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="<?php echo URL; ?>public_html/js/api.js"></script>
 
+<script src="<?php echo URL; ?>public_html/js/scripts.js"></script>
