@@ -7,9 +7,9 @@
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Restaurantes</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Productos</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Reportes</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="Usuarios">Usuarios</a>
                   
                 </div>
             </div>
-            <!-- Page content wrapper-->
-            
+
         </div>
