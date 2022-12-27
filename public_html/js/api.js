@@ -56,7 +56,8 @@ class Api{
     }
     
     async deleteUser(id){
-        const query=await fetch(`${BASE_API}Usuarios/getOneUser?id=${id}`);
+        const query=await fetch(`${BASE_API}Usuarios/deleteUser?id=${id}`);
+        console.log("aqui es");
         const data=await query.json();
         return data;
     }
