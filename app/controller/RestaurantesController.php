@@ -63,7 +63,7 @@ include_once "app/model/restaurantes.php";
             if (count($records)>0) {
                 $info=array('success'=>true,'records'=>$records);
             }else {
-                $info=array('success'=>false,'msg'=>"usuario no existe");
+                $info=array('success'=>false,'msg'=>"Restaurante no existe");
             }
             echo json_encode($info);
         }
@@ -72,7 +72,7 @@ include_once "app/model/restaurantes.php";
         {
             
             $records=$this->restaurante->deleteRestaurante($_GET["id"]);
-            $info=array('success'=>true, 'msg'=>"usuario eliminado");
+            $info=array('success'=>true, 'msg'=>"Restaurante eliminado");
             echo json_encode($info);
         }
 

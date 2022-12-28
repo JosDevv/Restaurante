@@ -21,13 +21,8 @@ class Api{
         console.log(data);
         return data;
     }
-    async loadCategorias(){
-        const query=await fetch(`${BASE_API}Restaurantes/getAllCategorias`);
-        const data=await query.json();
-        return data;
-    }
-    async loadAutores(){
-        const query=await fetch(`${BASE_API}Restaurantes/getAllAutores`);
+    async loadProductos(){
+        const query=await fetch(`${BASE_API}Productos/getAllProductos`);
         const data=await query.json();
         return data;
     }
@@ -49,6 +44,24 @@ class Api{
         return data;
     }
 
+    async saveProducto(form){
+        const query=await fetch(`${BASE_API}Productos/save`,{
+            method:"POST",
+            body:form,
+        });
+        const data=await query.json();
+        return data;
+    }
+
+    async saveIngrediente(form){
+        const query=await fetch(`${BASE_API}Productos/saveI`,{
+            method:"POST",
+            body:form,
+        });
+        const data=await query.json();
+        return data;
+    }
+
     async getOneUser(id){
         const query=await fetch(`${BASE_API}Usuarios/getOneUser?id=${id}`);
         const data=await query.json();
@@ -57,6 +70,12 @@ class Api{
     
     async getOneRestaurante(id){
         const query=await fetch(`${BASE_API}Restaurantes/getOneRestaurante?id=${id}`);
+        const data=await query.json();
+        return data;
+    }
+
+    async getOneProducto(id){
+        const query=await fetch(`${BASE_API}Productos/getOneProductos?id=${id}`);
         const data=await query.json();
         return data;
     }
@@ -70,6 +89,12 @@ class Api{
 
     async deleteRestaurante(id){
         const query=await fetch(`${BASE_API}Restaurantes/deleteRestaurante?id=${id}`);
+        
+        const data=await query.json();
+        return data;
+    }
+    async deleteProducto(id){
+        const query=await fetch(`${BASE_API}Productos/deleteProductos?id=${id}`);
         
         const data=await query.json();
         return data;
