@@ -17,7 +17,7 @@ class Restaurante extends BaseDeDatos {
     }
     public function save($data,$img)
     {
-        return $this->executeInsert("INSERT INTO `restaurantes` ( `nombre_restaurante`, `direccion`, `telefono`, `contacto`, `foto`, `fecha_ingreso`, `latitud`, `longitud`) VALUES ('{$data["nombre_restaurante"]}', '{$data["direccion"]}', '{$data["telefono"]}', '{$data["contacto"]}', '{$data["foto"]}', '{$data["fecha"]}', '{$data["latitud"]}', '{$data["longitud"]}')");    
+        return $this->executeInsert("INSERT INTO `restaurantes` ( `nombre_restaurante`, `direccion`, `telefono`, `contacto`, `foto`, `fecha_ingreso`, `latitud`, `longitud`) VALUES ('{$data["nombre_restaurante"]}', '{$data["direccion"]}', '{$data["telefono"]}', '{$data["contacto"]}', '{$img}', '{$data["fecha"]}', '{$data["lat"]}', '{$data["long"]}')");    
     }
 
     public function getOneRestaurante($id)
@@ -33,7 +33,7 @@ class Restaurante extends BaseDeDatos {
 
     public function update($data,$img)
     { 
-        return $this->executeUpdate("UPDATE `restaurantes` SET `nombre_restaurante`='{$data["nombre_restaurante"]}',`direccion`='{$data["direccion"]}',`telefono`='{$data["telefono"]}',`contacto`='{$data["contacto"]}',`foto`=if('{$img}'='',foto,'{$img}'),`fecha_ingreso`='{$data["fecha"]}',`latitud`='{$data["latitud"]}',`longitud`='{$data["longitud"]}' WHERE `idrestaurante`='{$data["idrestaurante"]}'");
+        return $this->executeUpdate("UPDATE `restaurantes` SET `nombre_restaurante`='{$data["nombre_restaurante"]}',`direccion`='{$data["direccion"]}',`telefono`='{$data["telefono"]}',`contacto`='{$data["contacto"]}',`foto`=if('{$img}'='',foto,'{$img}'),`fecha_ingreso`='{$data["fecha"]}',`latitud`='{$data["lat"]}',`longitud`='{$data["long"]}' WHERE `idrestaurante`='{$data["idrestaurante"]}'");
     }
 
     public function deleteRestaurante($id)

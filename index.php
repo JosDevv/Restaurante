@@ -1,4 +1,6 @@
+
 <?php
+
 define('URL','/Restaurante/');
 require_once "app/controller/ErroresController.php";
     require_once "app/controller/Controller.php";

@@ -12,14 +12,20 @@ const miForm=document.querySelector("#miform");
 //para paginacion 4 registros
 const recordsShow=5;
 const API=new Api();
+let marker;
+
+
 const objDatos={
     records:[],
     recordsFilter:[],
     currentPage:1,
+    markers : [],
     filter:""
 };
 
 eventListener();
+
+
 
 function eventListener() {
     btnNew.addEventListener("click",agregarRestaurantes);
@@ -48,14 +54,77 @@ function actualizarFoto(el){
 }
 //funcion para mostrar el fomrulario
 function agregarRestaurantes() {
+    initMap();
     panelDatos.classList.add("d-none");
     panelFormulario.classList.remove("d-none");
     limpiarForm();
     
+    
 }
+
+//funcion para limpiar el formulario
+function limpiarForm() {
+    miForm.reset();
+    
+    document.querySelector("#idrestaurante").value="0";
+    document.querySelector("#lat").value="";
+    document.querySelector("#long").value="";
+    divFoto.innerHTML="";
+    
+
+}
+
+//funcion para iniciar el mapa de Google
+function initMap() {
+    const salvador={lat: 13.701035, lng: -89.224434};
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: salvador,
+        zoom: 15
+      });
+
+    
+
+    // Agrega un evento click al mapa
+    map.addListener('click', function(e) {
+        //  addMarker(e.latLng);
+        
+      // Obtiene las coordenadas del click
+      var lat = e.latLng.lat();
+      var lng = e.latLng.lng();
+      document.querySelector("#lat").value=lat;
+      document.querySelector("#long").value=lng;
+      
+
+// Agrega un evento click al mapa
+map.addListener('click', function(e) {
+  // Obtiene las coordenadas del click
+  var lat = e.latLng.lat();
+  var lng = e.latLng.lng();
+
+  // Si ya existe un marcador en el mapa, lo elimina
+  if (marker) {
+    marker.setMap(null);
+  }
+
+  // Crea un marcador en las coordenadas del click
+  marker = new google.maps.Marker({
+    position: {lat: lat, lng: lng},
+    map: map
+  });
+});
+      
+    });
+    
+    //addMarker(salvador);
+
+    
+  }
+  function hideMarkers() {
+    marker.setMap(null);
+  }
 //funcion para actualizar los restaurantes
 function editarRestaurante(id){
-    //limpiarForm(1);
+    limpiarForm();
     panelDatos.classList.add("d-none");
     panelFormulario.classList.remove("d-none");
     API.getOneRestaurante(id)
@@ -81,21 +150,35 @@ function editarRestaurante(id){
 }
 //funcion para rellenar el formulario cuando se da un update
 function mostrarDatosForm(records) {
-    const {idrestaurante,nombre_restaurante,direccion,telefono,contacto,fecha_ingreso,foto}=records
+    const {idrestaurante,nombre_restaurante,direccion,telefono,contacto,fecha_ingreso,foto,latitud,longitud}=records
     document.querySelector("#idrestaurante").value=idrestaurante;
     document.querySelector("#nombre_restaurante").value=nombre_restaurante;
     document.querySelector("#direccion").value=direccion;
     document.querySelector("#telefono").value=telefono;
     document.querySelector("#contacto").value=contacto;
     document.querySelector("#fecha").value=fecha_ingreso;
+    document.querySelector("#lat").value=latitud;
+    document.querySelector("#long").value=longitud;
+    initMap();
+    
+    addMarker({lat:Number(latitud), lng:Number(longitud)});
     //latitud
     //longitud
     divfoto.innerHTML=`<img src="${foto}" class="h-100 w-100" style="object-fit:contain;"></img>`;
 
 }
 
+function addMarker(position) {
+     marker = new google.maps.Marker({
+      position,
+      map,
+    });
+  }
+  
+
 //funcion para mostrar la tabla
 function mostrarTabla() {
+    hideMarkers();
     panelDatos.classList.remove("d-none");
     panelFormulario.classList.add("d-none");
     crearDatos();
@@ -103,6 +186,7 @@ function mostrarTabla() {
 
 //funcion para cargar los datos en la tabla cuando el DOM se carga
 function crearDatos(){
+    
     API.loadRestaurantes().then(data=>{
         if(data.success){
             objDatos.records=data.records;
@@ -234,6 +318,7 @@ function guardarRestaurante(e) {
     .then(data=>{
         if (data.success) {
             mostrarTabla();
+            hideMarkers();
             Swal.fire({
                 icon:"info",
                 text:data.msg

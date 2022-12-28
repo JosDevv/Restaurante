@@ -115,6 +115,15 @@
                                 </div>
                                 
                             </div>
+
+                            <div class="form-group row mb-3">
+                            <label for="latlng" class="col-sm-2 col-form-label">Seleccione una ubicacion</label>
+                            <div class="col-sm-10 w-75" id="map" style="height: 400px; "></div>
+                            
+
+                            <input type="hidden" name="lat" id="lat" >
+                            <input type="hidden" name="long" id="long" >
+                            </div>
                             <div class="alert alert-danger d-none" id="mensaje">
 
                             </div>
