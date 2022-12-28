@@ -134,7 +134,7 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="col-sm-12 w-100 mx-auto" id="mapp" style="height: 400px; "></div>
         </section>
 
             </div>
