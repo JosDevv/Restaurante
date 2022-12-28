@@ -14,20 +14,20 @@ class Api{
         const data=await query.json();
         return data;
     }
-    async loadLibros(){
-        const query=await fetch(`${BASE_API}Libros/getAllLibros`);
+    async loadRestaurantes(){
+        const query=await fetch(`${BASE_API}Restaurantes/getAllRestaurantes`);
         
         const data=await query.json();
         console.log(data);
         return data;
     }
     async loadCategorias(){
-        const query=await fetch(`${BASE_API}Libros/getAllCategorias`);
+        const query=await fetch(`${BASE_API}Restaurantes/getAllCategorias`);
         const data=await query.json();
         return data;
     }
     async loadAutores(){
-        const query=await fetch(`${BASE_API}Libros/getAllAutores`);
+        const query=await fetch(`${BASE_API}Restaurantes/getAllAutores`);
         const data=await query.json();
         return data;
     }
@@ -39,9 +39,9 @@ class Api{
         const data=await query.json();
         return data;
     }
-// no sirve
-    async saveLibro(form){
-        const query=await fetch(`${BASE_API}Libros/save`,{
+
+    async saveRestaurante(form){
+        const query=await fetch(`${BASE_API}Restaurantes/save`,{
             method:"POST",
             body:form,
         });
@@ -55,9 +55,22 @@ class Api{
         return data;
     }
     
+    async getOneRestaurante(id){
+        const query=await fetch(`${BASE_API}Restaurantes/getOneRestaurante?id=${id}`);
+        const data=await query.json();
+        return data;
+    }
+
     async deleteUser(id){
         const query=await fetch(`${BASE_API}Usuarios/deleteUser?id=${id}`);
-        console.log("aqui es");
+   
+        const data=await query.json();
+        return data;
+    }
+
+    async deleteRestaurante(id){
+        const query=await fetch(`${BASE_API}Restaurantes/deleteRestaurante?id=${id}`);
+        
         const data=await query.json();
         return data;
     }
