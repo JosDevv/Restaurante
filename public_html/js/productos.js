@@ -158,8 +158,8 @@ function crearTabla() {
         
     }else{
         objDatos.recordsFilter=objDatos.records.filter(item=>{
-            const {nombre,descripcion,precio,ntipo}=item;//cambiar para los demas campos
-            if ((nombre.toLowerCase().search(objDatos.filter.toLowerCase())!=-1)){// || (descripcion.toLowerCase().search(objDatos.filter.toLowerCase())!=-1) || (precio.toLowerCase().search(objDatos.filter.toLowerCase())!=-1) || (ntipo.toLowerCase().search(objDatos.filter.toLowerCase())!=-1)) {
+            const {nombre,descripcion,precio,nombre_restaurante}=item;//cambiar para los demas campos
+            if ((nombre.toLowerCase().search(objDatos.filter.toLowerCase())!=-1) || (precio.toLowerCase().search(objDatos.filter.toLowerCase())!=-1) || (nombre_restaurante.toLowerCase().search(objDatos.filter.toLowerCase())!=-1)) {
                 return item;
                 
             }

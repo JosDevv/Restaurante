@@ -9,7 +9,7 @@ const paginacion = document.querySelector(".pagination");
 const divfoto = document.querySelector("#divFoto");
 const inputfoto = document.querySelector("#foto");
 const miForm = document.querySelector("#miform");
-const mapaDashboard=document.querySelector("#mapp");
+const mapaDashboard = document.querySelector("#mapp");
 //para paginacion 4 registros
 const recordsShow = 5;
 const API = new Api();
@@ -75,7 +75,6 @@ function initMap() {
     zoom: 15,
   });
 
-
   // Agrega un evento click al mapa
   map.addListener("click", function (e) {
     //  addMarker(e.latLng);
@@ -109,44 +108,43 @@ function initMap() {
 }
 
 function initMapDashboard() {
-    const salvador = { lat: 13.701035, lng: -89.224434 };
-    mapp = new google.maps.Map(document.getElementById("mapp"), {
-      center: salvador,
-      zoom: 15,
-    });
-  
-  
+  const salvador = { lat: 13.701035, lng: -89.224434 };
+  mapp = new google.maps.Map(document.getElementById("mapp"), {
+    center: salvador,
+    zoom: 15,
+  });
+
+  // Agrega un evento click al mapa
+  map.addListener("click", function (e) {
+    //  addMarker(e.latLng);
+
+    // Obtiene las coordenadas del click
+    var lat = e.latLng.lat();
+    var lng = e.latLng.lng();
+    document.querySelector("#lat").value = lat;
+    document.querySelector("#long").value = lng;
+
     // Agrega un evento click al mapa
     map.addListener("click", function (e) {
-      //  addMarker(e.latLng);
-  
       // Obtiene las coordenadas del click
       var lat = e.latLng.lat();
       var lng = e.latLng.lng();
-      document.querySelector("#lat").value = lat;
-      document.querySelector("#long").value = lng;
-  
-      // Agrega un evento click al mapa
-      map.addListener("click", function (e) {
-        // Obtiene las coordenadas del click
-        var lat = e.latLng.lat();
-        var lng = e.latLng.lng();
-  
-        // Si ya existe un marcador en el mapa, lo elimina
-        if (marker) {
-          marker.setMap(null);
-        }
-  
-        // Crea un marcador en las coordenadas del click
-        marker = new google.maps.Marker({
-          position: { lat: lat, lng: lng },
-          map: map,
-        });
+
+      // Si ya existe un marcador en el mapa, lo elimina
+      if (marker) {
+        marker.setMap(null);
+      }
+
+      // Crea un marcador en las coordenadas del click
+      marker = new google.maps.Marker({
+        position: { lat: lat, lng: lng },
+        map: map,
       });
     });
-  
-    //addMarker(salvador);
-  }
+  });
+
+  //addMarker(salvador);
+}
 function hideMarkers() {
   if (marker) {
     marker.setMap(null);
@@ -154,19 +152,17 @@ function hideMarkers() {
 }
 
 function addMarker(position) {
-    marker2 = new google.maps.Marker({
-      position,
-      map:map,
-    });
-    
-  }
-  function addMarkerD(positions) {
-    marker2 = new google.maps.Marker({
-      position:{lat: Number(positions['lat']) , lng: Number(positions['lng']) },
-      map:mapp,
-    });
-    
-  }
+  marker2 = new google.maps.Marker({
+    position,
+    map: map,
+  });
+}
+function addMarkerD(positions) {
+  marker2 = new google.maps.Marker({
+    position: { lat: Number(positions["lat"]), lng: Number(positions["lng"]) },
+    map: mapp,
+  });
+}
 
 //funcion para actualizar los restaurantes
 function editarRestaurante(id) {
@@ -174,7 +170,7 @@ function editarRestaurante(id) {
   panelDatos.classList.add("d-none");
   mapaDashboard.classList.add("d-none");
   panelFormulario.classList.remove("d-none");
-  
+
   API.getOneRestaurante(id)
     .then((data) => {
       if (data.success) {
@@ -220,8 +216,6 @@ function mostrarDatosForm(records) {
   divfoto.innerHTML = `<img src="${foto}" class="h-100 w-100" style="object-fit:contain;"></img>`;
 }
 
-
-
 //funcion para mostrar la tabla
 function mostrarTabla() {
   hideMarkers();
@@ -250,28 +244,27 @@ function crearDatos() {
 }
 
 function setMapOnAll() {
-    for (let i = 0; i < objDatos.markers.length; i++) {
-        objDatos.markers[i].setMap(mapp);
-    }
+  for (let i = 0; i < objDatos.markers.length; i++) {
+    objDatos.markers[i].setMap(mapp);
   }
-  
+}
+
 //funcion para dibujar la tabla luego de optenerla en la funcion crearDatos
 function crearTabla() {
-    initMapDashboard();
+  initMapDashboard();
   if (objDatos.filter === "") {
     objDatos.recordsFilter = objDatos.records.map((item) => item);
-    
-    objDatos.recordsFilter.forEach((item, index) => {
-        objDatos.markers.push({lat:item['latitud'],lng:item['longitud']});
-        addMarkerD({lat:item['latitud'],lng:item['longitud']});
 
+    objDatos.recordsFilter.forEach((item, index) => {
+      objDatos.markers.push({ lat: item["latitud"], lng: item["longitud"] });
+      addMarkerD({ lat: item["latitud"], lng: item["longitud"] });
     });
     console.log(objDatos.markers);
   } else {
-    objDatos.markers.splice(0, objDatos.markers.length);//elimino los elementos del array para agregar los del filtro
+    objDatos.markers.splice(0, objDatos.markers.length); //elimino los elementos del array para agregar los del filtro
     objDatos.recordsFilter = objDatos.records.filter((item) => {
-        objDatos.markers.push({lat:item['latitud'],lng:item['longitud']});
-        addMarkerD({lat:item['latitud'],lng:item['longitud']});
+      objDatos.markers.push({ lat: item["latitud"], lng: item["longitud"] });
+      addMarkerD({ lat: item["latitud"], lng: item["longitud"] });
       const {
         contacto,
         direccion,
@@ -283,11 +276,9 @@ function crearTabla() {
       if (
         contacto.toLowerCase().search(objDatos.filter.toLowerCase()) != -1 ||
         direccion.toLowerCase().search(objDatos.filter.toLowerCase()) != -1 ||
-        fecha_ingreso.toLowerCase().search(objDatos.filter.toLowerCase()) !=
-          -1 ||
-        nombre_restaurante
-          .toLowerCase()
-          .search(objDatos.filter.toLowerCase()) != -1
+        fecha_ingreso.toLowerCase().search(objDatos.filter.toLowerCase()) !=-1 ||
+        nombre_restaurante.toLowerCase().search(objDatos.filter.toLowerCase()) != -1 ||
+        telefono.toLowerCase().search(objDatos.filter.toLowerCase()) != -1
       ) {
         return item;
       }
