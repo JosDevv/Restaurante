@@ -263,6 +263,7 @@ function crearTabla() {
   } else {
     objDatos.markers.splice(0, objDatos.markers.length); //elimino los elementos del array para agregar los del filtro
     objDatos.recordsFilter = objDatos.records.filter((item) => {
+     
       objDatos.markers.push({ lat: item["latitud"], lng: item["longitud"] });
       addMarkerD({ lat: item["latitud"], lng: item["longitud"] });
       const {
@@ -313,7 +314,7 @@ function crearTabla() {
         <td scope="col"><button class="btn btn-primary btn-xs" onClick="editarRestaurante(${
           item.idrestaurante
         })" ><i class="far fa-edit"></i></button>
-        <button class="btn btn-danger btn-xs" onClick="eliminarUsuario(${
+        <button class="btn btn-danger btn-xs" onClick="eliminarRestaurante(${
           item.idrestaurante
         })" ><i class="far fa-trash-alt"></i></button></td>
         </tr>
@@ -324,9 +325,10 @@ function crearTabla() {
 
   tableContent.innerHTML = html;
   crearPaginacion();
+  
 }
 //funcion para eliminar un registro
-function eliminarUsuario(id) {
+function eliminarRestaurante(id) {
   Swal.fire({
     title: "Esta seguro de eliminar el Registro",
     showDenyButton: true,

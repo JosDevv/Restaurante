@@ -11,7 +11,7 @@
 
         </section>
         <div class="row">
-            <div class="col-sm-2">
+            <div class="col-md-2  col-sm-4">
                 <section id="menu">
 
                     <?php include_once "app/view/secciones/menu.php" ?>
@@ -19,7 +19,7 @@
                 </section>
     
             </div>  
-            <div class="col-sm-9">
+            <div class="col-md-9  col-sm-6">
                 <section id="contenido">
                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">

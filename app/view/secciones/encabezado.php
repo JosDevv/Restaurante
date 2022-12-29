@@ -6,7 +6,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        
+        <!-- <button class="btn btn-primary" id="sidebarToggle">Toggle Menu</button> -->
                     </ul>
                     
                     <li class="nav-item">
