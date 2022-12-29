@@ -41,5 +41,7 @@ class Restaurante extends BaseDeDatos {
         return $this->executeUpdate("DELETE FROM `restaurantes` WHERE `idrestaurante`='{$id}'");
     }
 
+    
+
 }
 //return $this->executeInsert("INSERT INTO `restaurantes` (`idrestaurante`, `nombre_restaurante`, `direccion`, `telefono`, `contacto`, `foto`, `fecha_ingreso`, `latitud`, `longitud`) VALUES ('{$data["idrestaurante"]}', '{$data["nombre_restaurante"]}', '{$data["direccion"]}', '{$data["telefono"]}', '{$data["contacto"]}', '{$data["foto"]}', '{$data["fecha_ingreso"]}', '{$data["latitud"]}', '{$data["longitud"]}')");

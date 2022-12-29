@@ -50,6 +50,22 @@ class Productos extends BaseDeDatos {
     {
         return $this->executeInsert("INSERT INTO `ingredientes`(`idproducto`, `descripcion`, `costo_adicional`) VALUES ('{$data['idingrediente']}','{$data['descripcion']}',CAST('{$data['costo']}' AS DECIMAL))");
     }
+
+    public function getAllProdctosReportes($data)
+    {
+        $condicion="";
+        if ($data['id']!=0) {
+            $condicion=" AND productos.idrestarutante='{$data['id']}'";
+            
+        }
+        if($data['fechai']!=''){
+            
+            $condicion.="AND restaurantes.fecha_ingreso BETWEEN '{$data['fechai']}' AND '{$data['fechaf']}'";
+           
+        }
+        //echo "ss";
+       return $this->executeQuery("SELECT productos.*, restaurantes.nombre_restaurante,restaurantes.fecha_ingreso FROM productos INNER JOIN restaurantes ON restaurantes.idrestaurante = productos.idrestarutante where 1 {$condicion}");        
+    }
 //CAST('{$data['precio']}' AS DECIMAL)
 }
 ?> 
