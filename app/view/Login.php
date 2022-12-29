@@ -27,7 +27,7 @@
                         <div class="alert alert-danger d-none" role="alert" id="mensaje"> 
                         </div>
                         <div class="d-grid gap-2 mb-4">
-                        <button class="btn btn-primary" type="submit">Login</button>
+                        <button class="btn btn-primary btn btn-primary btn-lg btn-block" type="submit">Login</button>
                         </div>
                         </form>
                     </div>

@@ -18,7 +18,7 @@ class Api{
         const query=await fetch(`${BASE_API}Restaurantes/getAllRestaurantes`);
         
         const data=await query.json();
-        console.log(data);
+        
         return data;
     }
     async loadProductos(){

@@ -161,7 +161,7 @@ function actualizarFoto(el) {
 function guardarUsuario(e) {
   e.preventDefault();
   const formData = new FormData(miForm);
-  console.log(formData);
+  
   API.saveUser(formData)
     .then((data) => {
       if (data.success) {

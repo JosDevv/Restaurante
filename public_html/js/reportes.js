@@ -25,7 +25,7 @@ function crearDatos() {
   }
 
   function llenarRestaurantes(records){
-    console.log(records);
+   
     idrestaurantes.innerHTML="";
     const optionRest=document.createElement("option");
     optionRest.value="0";

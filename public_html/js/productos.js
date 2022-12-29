@@ -57,7 +57,7 @@ function mostrarTabla() {
 function guardarproducto(e) {
     e.preventDefault();
     const formData=new FormData(miForm);
-    console.log(formData);
+
     API.saveProducto(formData)
     .then(data=>{
         if (data.success) {
@@ -81,7 +81,7 @@ function guardarproducto(e) {
 function guardarIngrediente(e) {
     e.preventDefault();
     const formData=new FormData(miFormI);
-    console.log(formData);
+
     API.saveIngrediente(formData)
     .then(data=>{
         if (data.success) {
@@ -142,7 +142,7 @@ function crearDatos(){
 }
 
 function llenarRestaurantes(records){
-    console.log(records);
+    
     idrestaurantes.innerHTML="";
     records.forEach(item=>{
         const {idrestaurante,nombre_restaurante}=item;

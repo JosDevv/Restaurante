@@ -259,7 +259,7 @@ function crearTabla() {
       objDatos.markers.push({ lat: item["latitud"], lng: item["longitud"] });
       addMarkerD({ lat: item["latitud"], lng: item["longitud"] });
     });
-    console.log(objDatos.markers);
+    
   } else {
     objDatos.markers.splice(0, objDatos.markers.length); //elimino los elementos del array para agregar los del filtro
     objDatos.recordsFilter = objDatos.records.filter((item) => {
@@ -400,7 +400,7 @@ function aplicarFiltro(e) {
 function guardarRestaurante(e) {
   e.preventDefault();
   const formData = new FormData(miForm);
-  console.log(formData);
+ 
   API.saveRestaurante(formData)
     .then((data) => {
       if (data.success) {
