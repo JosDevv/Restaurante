@@ -5,6 +5,9 @@ class Controller{
     //creo un constructor con 3 parametros el parametro validar servira para saber si esa vista esta protegida o es de acceso publico
     public function __construct($view,$param,$validar=false){
         $this->view=new View();
+        if (!isset($_SESSION)) {
+            session_start();
+        }
         //si pido que la vista tiene que estar validada
         if ($validar) {
             //en caso de que la variable _SESSION no este iniciada la inicio 
@@ -14,8 +17,13 @@ class Controller{
             //en el caso de que el id usuaro no exista lo mando al main
             echo $_SESSION["nombres"];
             if (!isset($_SESSION["id_usr"])) {
-                $this->view->Render("Main");
+                
+                $this->view->Render("Login");
                 exit(0);
+            }
+            if ($_SESSION["id_tipo"]==="2") {
+                $this->view->Render("Main");
+                return;
             }
         }
         if (empty($param)) {

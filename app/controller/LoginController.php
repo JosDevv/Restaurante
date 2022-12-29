@@ -30,7 +30,8 @@ include_once "app/model/login.php";
                if ($record["tipo"]==1) {
                 $info=array("success"=>true,"msg"=>"Usuario Correcto","link"=>URL."Dashboard");
                }else{
-                $info=array("success"=>true,"msg"=>"Usuario Correcto","link"=>URL."Dashboarduser");
+                
+                $info=array("success"=>true,"msg"=>"Usuario Correcto","link"=>URL."Main");
                }
             //en caso de que no exista lo informo
             }else{
