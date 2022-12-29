@@ -66,6 +66,20 @@ class Productos extends BaseDeDatos {
         //echo "ss";
        return $this->executeQuery("SELECT productos.*, restaurantes.nombre_restaurante,restaurantes.fecha_ingreso FROM productos INNER JOIN restaurantes ON restaurantes.idrestaurante = productos.idrestarutante where 1 {$condicion}");        
     }
+
+
+    function guardarFoto($nombreArchivo) {
+        $rutaDestino = __DIR__ . "/../../public_html/fotos/";
+        $tiposPermitidos = array("image/png", "image/jpeg");
+        $img = "";
+      
+        if (in_array($_FILES[$nombreArchivo]['type'], $tiposPermitidos) && is_uploaded_file($_FILES[$nombreArchivo]['tmp_name'])) {
+          copy($_FILES[$nombreArchivo]['tmp_name'], $rutaDestino . $_FILES[$nombreArchivo]['name']) or die("No se pudo guardar Archivo");
+          $img = URL . "public_html/fotos/" . $_FILES[$nombreArchivo]['name'];
+        }
+      
+        return $img;
+      }
 //CAST('{$data['precio']}' AS DECIMAL)
 }
 ?> 

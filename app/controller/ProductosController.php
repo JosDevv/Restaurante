@@ -30,46 +30,10 @@ include_once "app/model/productos.php";
         public function save()  
         {
             
-            $imgp="";
-            $imgm="";
-            $imgg="";
-
-            if (isset($_FILES["fotop"])) {
-                if (is_uploaded_file($_FILES["fotop"]["tmp_name"])) {
-                    if (($_FILES["fotop"]["type"]=="image/png") || ($_FILES["fotop"]["type"]=="image/jpeg")) {
-                        copy($_FILES["fotop"]["tmp_name"],__DIR__."/../../public_html/fotos/".$_FILES["fotop"]["name"]) or die("No se pudo guardar Archivo");
-                        $imgp=URL."public_html/fotos/".$_FILES["fotop"]["name"];
-                    }else{
-                        $imgp="";
-                    }
-
-                    
-                }
-            }
-            if (isset($_FILES["fotom"])) {
-                if (is_uploaded_file($_FILES["fotom"]["tmp_name"])) {
-                    if (($_FILES["fotom"]["type"]=="image/png") || ($_FILES["fotom"]["type"]=="image/jpeg")) {
-                        copy($_FILES["fotom"]["tmp_name"],__DIR__."/../../public_html/fotos/".$_FILES["fotom"]["name"]) or die("No se pudo guardar Archivo");
-                        $imgm=URL."public_html/fotos/".$_FILES["fotom"]["name"];
-                    }else{
-                        $imgm="";
-                    }
-
-                    
-                }
-            }
-            if (isset($_FILES["fotog"])) {
-                if (is_uploaded_file($_FILES["fotog"]["tmp_name"])) {
-                    if (($_FILES["fotog"]["type"]=="image/png") || ($_FILES["fotog"]["type"]=="image/jpeg")) {
-                        copy($_FILES["fotog"]["tmp_name"],__DIR__."/../../public_html/fotos/".$_FILES["fotog"]["name"]) or die("No se pudo guardar Archivo");
-                        $imgg=URL."public_html/fotos/".$_FILES["fotog"]["name"];
-                    }else{
-                        $imgg="";
-                    }
-
-                    
-                }
-            }
+            $imgp = $this->productos->guardarFoto("fotop");
+            $imgm = $this->productos->guardarFoto("fotom");
+            $imgg = $this->productos->guardarFoto("fotog");
+            
             if ($_POST["idproducto"]==0) {
                     
                 if(count($this->productos->getProductosByName($_POST["nombre"]))>0){
