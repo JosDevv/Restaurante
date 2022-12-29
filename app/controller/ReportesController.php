@@ -2,6 +2,7 @@
 include_once "app/model/restaurantes.php";
 include_once "app/model/productos.php";
 require_once 'vendor/autoload.php';
+//libreria de pdf
 use Dompdf\Dompdf;
     class ReportesController extends Controller {
         private $restaurante;
@@ -11,11 +12,12 @@ use Dompdf\Dompdf;
             $this->productos=new Productos();
             parent::__construct("Reportes",$param);
         }
+        //fucion que optiene los registros ya filtrados
         public function getReporte()
         {  
             
             $resultadoProductos=$this->productos->getAllProdctosReportes($_GET);
-            
+            //variable para contruir el reporte
             $html="<h1>Restaurantes Reporte</h1>";
             $html.="<h3>Listado De Productos</h3>";
             $html.="<table width='100%' border=1><thead><tr>";
@@ -44,7 +46,7 @@ use Dompdf\Dompdf;
             $dompdf->setPaper('A4', 'landscape');
             $dompdf->render();
 
-            // Output the generated PDF to Browser
+            // genera la salida en pdf en el navegador en este caso en un iframe
             $pdf = $dompdf->output();  
             echo '<iframe src="data:application/pdf;base64,' . base64_encode($pdf) . '" style="width:100%; height:500px;"></iframe>';       
 

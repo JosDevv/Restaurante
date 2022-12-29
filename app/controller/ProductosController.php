@@ -7,14 +7,14 @@ include_once "app/model/productos.php";
             parent::__construct("Productos",$param,true);
             
          }
-
+        //optener todos los productos
          public function getAllProductos()
         {
             $records=$this->productos->getAllProductos();
             $info=array('success'=> true,'records'=>$records);
             echo json_encode($info);
         }
-
+        //optiene un producto dependiendo del id
         public function getOneProductos()
         {
             $records=$this->productos->getOneProducto($_GET["id"]);
@@ -26,10 +26,10 @@ include_once "app/model/productos.php";
             echo json_encode($info);
         }
 
-
+        //funcion para guardar un producto
         public function save()  
         {
-            
+            //retorna una cadena vacia si no se a seteado una foto 
             $imgp = $this->productos->guardarFoto("fotop");
             $imgm = $this->productos->guardarFoto("fotom");
             $imgg = $this->productos->guardarFoto("fotog");
@@ -60,6 +60,7 @@ include_once "app/model/productos.php";
             echo json_encode($info);
             
         }
+        //funcion para eliminar un producto
         public function deleteProductos()
         {
             
@@ -67,7 +68,7 @@ include_once "app/model/productos.php";
             $info=array('success'=>true, 'msg'=>"Restaurante eliminado");
             echo json_encode($info);
         }
-
+        //funcion para guardar un ingrediente teniendo como base el id del producto
         public function saveI()  
         {
             $records=$this->productos->saveI($_POST);

@@ -7,12 +7,14 @@ include_once "app/model/usuarios.php";
             parent::__construct("Usuarios",$param,true);
             
          }
+         //optiene todos los usuarios
         public function getAll()
         {
             $records=$this->user->getAll();
             $info=array('success'=> true,'records'=>$records);
             echo json_encode($info);
         }
+        //guarda un usuario
         public function save()
         {
             $img="";
@@ -51,7 +53,7 @@ include_once "app/model/usuarios.php";
                 echo json_encode($info);
             }
         }
-
+        //optiene un usuario apartir de un id
         public function getOneUser()
         {
             $records=$this->user->getOneUser($_GET["id"]);
@@ -62,7 +64,7 @@ include_once "app/model/usuarios.php";
             }
             echo json_encode($info);
         }
-
+        //elimina un usuario
         public function deleteUser()
         {
             

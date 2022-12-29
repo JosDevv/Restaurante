@@ -141,6 +141,10 @@ function crearDatos(){
     });
 }
 
+/**
+ * Toma una lista de restaurantes y los agrega al menú desplegable
+ * @param records - Los registros que desea mostrar en el elemento seleccionado.
+ */
 function llenarRestaurantes(records){
     
     idrestaurantes.innerHTML="";
@@ -154,6 +158,9 @@ function llenarRestaurantes(records){
     });
  }
 
+/**
+ * Crea una tabla con los datos de la base de datos.
+ */
 function crearTabla() {
     if (objDatos.filter==="") {
         objDatos.recordsFilter=objDatos.records.map(item=>item);
@@ -196,6 +203,10 @@ function crearTabla() {
     crearPaginacion();
 }
 
+/**
+ * AgregarIngrediente(id)
+ * @param id - La identificación del ingrediente.
+ */
 function AgregarIngrediente(id) {
     //const {idproducto,nombre,descripcion,precio,idrestarutante,nombre_restaurante}=item;
     limpiarForm();
@@ -209,6 +220,11 @@ function AgregarIngrediente(id) {
 
 
 }
+/**
+ * Toma la identificación de un producto, obtiene los datos del producto de la API y luego muestra los
+ * datos del producto en el formulario
+ * @param id - El id del producto a editar.
+ */
 
 function editarproducto(id){
     limpiarForm();
@@ -236,6 +252,13 @@ function editarproducto(id){
     );
 }
 
+/**
+ * Es una función que toma una identificación como parámetro y luego muestra un cuadro de diálogo de
+ * confirmación, y si el usuario confirma, llama a la API para eliminar el producto con la
+ * identificación dada, y si la llamada a la API es exitosa, llama a la función volver a mostrar la
+ * tabla
+ * @param id - El id del producto que se va a eliminar.
+ */
 function eliminarproducto(id){
     Swal.fire({
         title:"Esta seguro de eliminar el Registro",
@@ -262,6 +285,10 @@ function eliminarproducto(id){
     }).catch();
 }
 
+/**
+ * Toma los datos de la base de datos y los pone en el formulario
+ * @param records - Los registros que se devolvieron de la base de datos.
+ */
 function mostrarDatosForm(records) {
     const {idproducto,idrestarutante,nombre,descripcion,foto1,foto2,foto3,precio,nombre_restaurante}=records
     document.querySelector("#idproducto").value=idproducto;
@@ -276,6 +303,9 @@ function mostrarDatosForm(records) {
 
 }
 
+/**
+ * Crea los botones de paginación.
+ */
 function crearPaginacion() {
     while(paginacion.firstElementChild){
         paginacion.removeChild(paginacion.firstElementChild);

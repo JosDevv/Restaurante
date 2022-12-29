@@ -45,12 +45,12 @@ class Productos extends BaseDeDatos {
     {
         return $this->executeUpdate("DELETE FROM `productos` WHERE `idproducto`='{$id}'");
     }
-
+    
     public function saveI($data)
     {
         return $this->executeInsert("INSERT INTO `ingredientes`(`idproducto`, `descripcion`, `costo_adicional`) VALUES ('{$data['idingrediente']}','{$data['descripcion']}',CAST('{$data['costo']}' AS DECIMAL))");
     }
-
+    //optiene todos los productos y los filtra si es requerido
     public function getAllProdctosReportes($data)
     {
         $condicion="";
@@ -67,7 +67,7 @@ class Productos extends BaseDeDatos {
        return $this->executeQuery("SELECT productos.*, restaurantes.nombre_restaurante,restaurantes.fecha_ingreso FROM productos INNER JOIN restaurantes ON restaurantes.idrestaurante = productos.idrestarutante where 1 {$condicion}");        
     }
 
-
+    //funcion para guardar las fotos si se han incluido 
     function guardarFoto($nombreArchivo) {
         $rutaDestino = __DIR__ . "/../../public_html/fotos/";
         $tiposPermitidos = array("image/png", "image/jpeg");

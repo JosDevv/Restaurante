@@ -8,7 +8,7 @@ include_once "app/model/restaurantes.php";
         }
 
         
-        
+        //metodo para optener los restaurantes para poder filtrar en reportes utiliza la misma estructura que en el select de productos
         public function getAllRestaurantes()
         {
             $records=$this->restaurante->getAllRestaurantes();

@@ -7,7 +7,7 @@ include_once "app/model/restaurantes.php";
             parent::__construct("Restaurantes",$param,true);
             
          }
-
+        //funcion para guardar los registros
          public function getAllRestaurantes()
         {
             $records=$this->restaurante->getAllRestaurantes();
@@ -15,6 +15,9 @@ include_once "app/model/restaurantes.php";
             echo json_encode($info);
         }
 
+        /**
+         * guarda un restaurante
+         */
         public function save()
         {
             $img="";
@@ -55,7 +58,7 @@ include_once "app/model/restaurantes.php";
                 echo json_encode($info);
             }
         }
-
+        //optiene un restaurante de un id
         public function getOneRestaurante()
         {
             
@@ -67,7 +70,7 @@ include_once "app/model/restaurantes.php";
             }
             echo json_encode($info);
         }
-
+        //borra un restaurante
         public function deleteRestaurante()
         {
             
