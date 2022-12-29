@@ -86,6 +86,7 @@ function guardarIngrediente(e) {
     .then(data=>{
         if (data.success) {
             mostrarTabla();
+            miFormI.reset();
             Swal.fire({
                 icon:"info",
                 text:data.msg
@@ -112,6 +113,7 @@ function agregarprecio() {
 }
 function limpiarForm() {
     miForm.reset();
+    
     document.querySelector("#idproducto").value="0";
     //document.querySelector("#restaurantesid").value="1";
     divFotop.innerHTML="";
@@ -197,10 +199,13 @@ function crearTabla() {
 function AgregarIngrediente(id) {
     //const {idproducto,nombre,descripcion,precio,idrestarutante,nombre_restaurante}=item;
     limpiarForm();
+    
     panelDatos.classList.add("d-none");
     panelFormulario.classList.add("d-none");
     panelFormularioIngredientes.classList.remove("d-none");
+    
     document.querySelector("#idingrediente").value=id;
+    
 
 
 }

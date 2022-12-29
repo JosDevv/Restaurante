@@ -43,4 +43,10 @@ function crearDatos() {
 
  function verReporte() {
     frame.src=`${BASE_API}Reportes/getReporte?id=${idrestaurantes.value}&fechai=${fechai.value}&fechaf=${fechaf.value}`;
+    limpiarInputs();
+ }
+ function limpiarInputs() {
+  idrestaurantes.value=0;
+  fechai.value='';
+  fechaf.value='';
  }
