@@ -18,7 +18,8 @@ use Dompdf\Dompdf;
             
             $resultadoProductos=$this->productos->getAllProdctosReportes($_GET);
             //variable para contruir el reporte
-            $html="<h1>Restaurantes Reporte</h1>";
+            $html="<h1>Il Forno della Pasta</h1><br> <h2>Reporte</h2>";
+            $html.="<h3>Nuestro restaurante es el lugar perfecto para disfrutar de deliciosas pastas frescas hechas a mano. Ofrecemos una amplia variedad de opciones, desde clásicos como spaghetti con albóndigas y lasagna hasta opciones más innovadoras como nuestra pasta de calabacín y nuestra pasta de espinacas y nueces. También tenemos opciones vegetarianas y veganas disponibles.</h3>";
             $html.="<h3>Listado De Productos</h3>";
             $html.="<table width='100%' border=1><thead><tr>";
             $html.="<th>corr</th>";
