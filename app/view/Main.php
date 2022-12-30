@@ -4,18 +4,19 @@
 <?php include_once "app/view/secciones/css.php" ?>
 </head>
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid" style="padding-left: 0px;padding-right: 0px;">
         <section id="encabezado">
         <?php include_once "app/view/secciones/encabezado.php" ?>
         </section>
         <div class="row">
-            <div class="col-sm-2">
+            
                 <section id="menu">
+                <div class="d-flex" id="wrapper">
                     <?php include_once "app/view/secciones/menuUser.php" ?>
-                </section>
-            </div>
-            <div class="col-sm-9">
-                <section id="contenido">
+                
+            
+                <div class="container-fluid">
+                
                     <div class="content-panel mt-4">
                       <div class="row mb-3 p3 m1">
                         <div class="col-md-12">
@@ -35,6 +36,7 @@
                       </div>   
                          <iframe src="" width="100%" height="400" id="framereporte"></iframe>
                     </div>
+                </div>
                 </section>
 
             </div>

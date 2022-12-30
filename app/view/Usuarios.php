@@ -4,18 +4,19 @@
 <?php include_once "app/view/secciones/css.php" ?>
 </head>
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid" style="padding-left: 0px;padding-right: 0px;">
         <section id="encabezado">
         <?php include_once "app/view/secciones/encabezado.php" ?>
         </section>
         <div class="row">
-            <div class="col-sm-2">
+            
                 <section id="menu">
+                <div class="d-flex" id="wrapper">
                     <?php include_once "app/view/secciones/menu.php" ?>
-                </section>
-            </div>
-            <div class="col-sm-9">
-                    <section id="contenido">
+               
+            
+                <div class="container-fluid">
+                    
                         <div class="content-panel mt-4" id="panelDatos">
                             <h4><i class="fa-sharp fa-solid fa-user-tie" ></i>
                                 <button id="btnagregar" class="btn btn-success btn-md ml-4" type="submit"><i class="fa-regular fa-square-plus"></i> Agregar Usuario</button>
@@ -124,7 +125,7 @@
                             </div>
                         </div>
                     </div>
-
+        </div>
         </section>
 
             </div>
