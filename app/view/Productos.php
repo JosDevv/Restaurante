@@ -93,7 +93,7 @@
                             <div class="form-group row mb-3">
                                 <label for="precio" class="col-sm-2 col-form-label">Precio</label>
                                 <div class="col-sm-10">
-                                <input type="number" class="form-control" id="precio" name="precio" required> 
+                                <input type="number" class="form-control" id="precio" name="precio" step="0.01" required> 
                                 </div>
                                 
                             </div>
@@ -164,7 +164,7 @@
                             <div class="form-group row mb-3">
                                 <label for="costo" class="col-sm-2 col-form-label">Costo adicional</label>
                                 <div class="col-sm-10">
-                                <input type="number" class="form-control" id="costo" name="costo" required> 
+                                <input type="number" class="form-control" id="costo" name="costo" step="0.01" required> 
                                 </div>
                                 
                             </div>

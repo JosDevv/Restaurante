@@ -20,7 +20,7 @@ const objDatos = {
 };
 
 eventListener();
-
+//definimos los eventos 
 function eventListener() {
   btnNew.addEventListener("click", agregarUsuario);
   btnCancelar.addEventListener("click", mostrarTabla);
@@ -31,7 +31,7 @@ function eventListener() {
   inputfoto.addEventListener("change", actualizarFoto);
   miForm.addEventListener("submit", guardarUsuario);
 }
-
+//funcion para traer los datos optenidos y invocar a la tabla
 function crearDatos() {
   API.loadData()
     .then((data) => {
@@ -47,7 +47,7 @@ function crearDatos() {
       console.error("Error:", error);
     });
 }
-
+//funcion para crear la tabla
 function crearTabla() {
   if (objDatos.filter === "") {
     objDatos.recordsFilter = objDatos.records.map((item) => item);
@@ -109,7 +109,7 @@ function aplicarFiltro(e) {
   objDatos.filter = this.value;
   crearTabla();
 }
-
+//funcion para crear la paginacion de la pagina
 function crearPaginacion() {
   while (paginacion.firstElementChild) {
     paginacion.removeChild(paginacion.firstElementChild);

@@ -36,13 +36,10 @@ include_once "app/model/productos.php";
             
             if ($_POST["idproducto"]==0) {
                     
-                if(count($this->productos->getProductosByName($_POST["nombre"]))>0){
-                    
-                    $info=array('success'=>false,'msg'=>"Producto existente");
-                }else{
+                
                     $records=$this->productos->save($_POST,$imgp,$imgm,$imgg);
                     $info=array('success'=>true,'msg'=>"Producto guardado");
-                }
+                
 
 
             }else{

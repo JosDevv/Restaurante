@@ -29,7 +29,7 @@ class Productos extends BaseDeDatos {
 
     public function save($data,$imgp,$imgm,$imgg)
     {
-        return $this->executeInsert("INSERT INTO `productos` SET `idrestarutante`='{$data['restauranteid']}',`nombre`='{$data['nombre']}',`descripcion`='{$data['descripcion']}',`foto1`='{$imgp}',`foto2`='{$imgm}',`foto3`='{$imgg}',`precio`=CAST('{$data['precio']}' AS DECIMAL)");
+        return $this->executeInsert("INSERT INTO `productos` SET `idrestarutante`='{$data['restauranteid']}',`nombre`='{$data['nombre']}',`descripcion`='{$data['descripcion']}',`foto1`='{$imgp}',`foto2`='{$imgm}',`foto3`='{$imgg}',`precio`='{$data['precio']}'");
     }
 
     public function getOneProducto($id)
@@ -39,7 +39,7 @@ class Productos extends BaseDeDatos {
     }
     public function update($data,$imgp=NULL,$imgm,$imgg)
     { 
-        return $this->executeUpdate("UPDATE `productos` SET `idrestarutante`='{$data['restauranteid']}',`nombre`='{$data['nombre']}',`descripcion`='{$data['descripcion']}',`foto1`=if('{$imgp}'='',`foto1`,'{$imgp}'),`foto2`=if('{$imgm}'='',`foto2`,'{$imgm}'),`foto3`=if('{$imgg}'='',`foto3`,'{$imgg}'),`precio`=CAST('{$data['precio']}' AS DECIMAL) WHERE `idproducto` = '{$data['idproducto']}'");
+        return $this->executeUpdate("UPDATE `productos` SET `idrestarutante`='{$data['restauranteid']}',`nombre`='{$data['nombre']}',`descripcion`='{$data['descripcion']}',`foto1`=if('{$imgp}'='',`foto1`,'{$imgp}'),`foto2`=if('{$imgm}'='',`foto2`,'{$imgm}'),`foto3`=if('{$imgg}'='',`foto3`,'{$imgg}'),`precio`='{$data['precio']}' WHERE `idproducto` = '{$data['idproducto']}'");
     }
     public function deleteProductos($id)
     {
@@ -48,7 +48,7 @@ class Productos extends BaseDeDatos {
     
     public function saveI($data)
     {
-        return $this->executeInsert("INSERT INTO `ingredientes`(`idproducto`, `descripcion`, `costo_adicional`) VALUES ('{$data['idingrediente']}','{$data['descripcion']}',CAST('{$data['costo']}' AS DECIMAL))");
+        return $this->executeInsert("INSERT INTO `ingredientes`(`idproducto`, `descripcion`, `costo_adicional`) VALUES ('{$data['idingrediente']}','{$data['descripcion']}','{$data['costo']}')");
     }
     //optiene todos los productos y los filtra si es requerido
     public function getAllProdctosReportes($data)
