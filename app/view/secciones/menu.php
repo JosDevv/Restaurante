@@ -8,7 +8,11 @@
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="Productos">Productos</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="Reportes">Reportes</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="Usuarios">Usuarios</a>
+                    <div class="sidebar-foot">
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="<?php echo URL ?>Login/cerrar"><?php if($_SESSION["nuser"]){ echo 'Cerrar Sesion'; }else{ echo'Iniciar Sesion'; } ?></a>
+                    
+                    </div>
                 </div>
+                
             </div>
         

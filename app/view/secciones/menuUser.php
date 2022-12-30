@@ -5,8 +5,10 @@
                 <div class="list-group list-group-flush">
                     
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#">Reportes</a>
+                    <div class="sidebar-footUser">
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="<?php echo URL ?>Login/cerrar"><?php if($_SESSION["nuser"]){ echo 'Cerrar Sesion'; }else{ echo'Iniciar Sesion'; } ?></a>
-                  
+                    
+                    </div>
                 </div>
             </div>
 
